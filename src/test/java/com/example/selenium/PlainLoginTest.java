@@ -8,6 +8,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.testng.Assert.assertEquals;
 
 public class PlainLoginTest {
@@ -15,7 +17,10 @@ public class PlainLoginTest {
 
     @BeforeClass
     public void setUp() {
+        System.setProperty("webdriver.chrome.driver", "/Users/alexander.kutenko/intro-to-selenium-hw/chromedriver");
         driver = new ChromeDriver();
+        driver.manage().timeouts()
+            .implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterClass
